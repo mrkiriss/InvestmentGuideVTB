@@ -1,4 +1,4 @@
-package com.example.investmentguidevtb.ui
+package com.example.investmentguidevtb.ui.profile
 
 import androidx.fragment.app.Fragment
 import com.example.investmentguidevtb.R
