@@ -1,5 +1,6 @@
 package com.example.investmentguidevtb.data.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.investmentguidevtb.data.source.api.PracticeApi
 import com.example.investmentguidevtb.ui.practice.models.GameSituation
@@ -20,6 +21,8 @@ class PracticeRepository @Inject constructor(
             capitalDiff.toString(),
             risk.toString()
         )
+
+        Log.i("retrofitTest", "result successful = ${result.isSuccessful}, result data = ${result.body()}")
 
         requestToChangeCardVisible.value = true
 
