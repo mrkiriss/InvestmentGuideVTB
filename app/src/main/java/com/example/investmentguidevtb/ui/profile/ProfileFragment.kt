@@ -10,7 +10,9 @@ import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.FragmentProfileBinding
 import com.example.investmentguidevtb.ui.profile.adapters.ChatAdapter
 import com.example.investmentguidevtb.ui.profile.models.UserMessage
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment() : Fragment(R.layout.fragment_profile) {
 
     private var _binding: FragmentProfileBinding? = null

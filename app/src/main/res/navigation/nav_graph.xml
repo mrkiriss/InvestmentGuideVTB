@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.investmentguidevtb.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Профиль"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_chatFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/theoryFragment"
         android:name="com.example.investmentguidevtb.ui.theory.TheoryFragment"
-        android:label="fragment_theory"
+        android:label="Теория"
         tools:layout="@layout/fragment_theory" />
     <fragment
         android:id="@+id/startGameFragment"
@@ -36,6 +36,6 @@
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.investmentguidevtb.ui.profile.ChatFragment"
-        android:label="fragment_chat"
+        android:label="Чат"
         tools:layout="@layout/fragment_chat" />
 </navigation>

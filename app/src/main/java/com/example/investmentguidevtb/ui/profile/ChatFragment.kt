@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.FragmentChatBinding
 import com.example.investmentguidevtb.ui.profile.adapters.ChatAdapter
-import com.example.investmentguidevtb.ui.profile.models.UserMessage
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChatFragment() : Fragment(R.layout.fragment_chat) {
+
+    private val viewModel by viewModels<ChatViewModel>()
+
     private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
 
@@ -22,19 +27,20 @@ class ChatFragment() : Fragment(R.layout.fragment_chat) {
         _binding = FragmentChatBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val list = listOf(
-            UserMessage(id=1, userId = 2, text = "Hello from VTB"),
-            UserMessage(id=2, userId = 1, text = "Hi from User"),
-            UserMessage(id=3, userId = 2, text = "What's up?"),
-            UserMessage(id=4, userId = 1, text = "Everything is great!"),
-            UserMessage(id=5, userId = 2, text = "Nice"),
-        )
-
         val chatAdapter = ChatAdapter()
         binding.recyclerViewChat.adapter = chatAdapter
-        chatAdapter.submitList(list)
 
+        viewModel.chatStateData.observe(viewLifecycleOwner){ listOfMessages ->
+            chatAdapter.submitList(listOfMessages)
+            chatAdapter.notifyDataSetChanged()
+        }
 
+        binding.apply {
+            btnAnswer0.setOnClickListener { viewModel.answerQuestion(0) }
+            btnAnswer1.setOnClickListener { viewModel.answerQuestion(1) }
+            btnAnswer2.setOnClickListener { viewModel.answerQuestion(2) }
+            btnAnswer3.setOnClickListener { viewModel.answerQuestion(3) }
+        }
 
         return view
     }
