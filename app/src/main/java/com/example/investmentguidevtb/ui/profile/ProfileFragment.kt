@@ -12,6 +12,8 @@ import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.FragmentProfileBinding
 import com.example.investmentguidevtb.ui.profile.adapters.ChatAdapter
 import com.example.investmentguidevtb.ui.profile.models.UserMessage
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -30,6 +32,9 @@ class ProfileFragment() : Fragment(R.layout.fragment_profile) {
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        requireActivity().findViewById<AppBarLayout>(R.id.appBarLayout).visibility = View.VISIBLE
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view).visibility = View.VISIBLE
 
         binding.btnStartSegmentation.setOnClickListener {
             val action = ProfileFragmentDirections.actionProfileFragmentToChatFragment()
