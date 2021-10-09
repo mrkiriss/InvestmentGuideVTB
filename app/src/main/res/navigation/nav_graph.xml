@@ -17,13 +17,22 @@
     <fragment
         android:id="@+id/practiceFragment"
         android:name="com.example.investmentguidevtb.ui.practice.PracticeFragment"
-        android:label="fragment_practice"
+        android:label="Запуск игры"
         tools:layout="@layout/fragment_practice" />
     <fragment
         android:id="@+id/theoryFragment"
         android:name="com.example.investmentguidevtb.ui.theory.TheoryFragment"
         android:label="fragment_theory"
         tools:layout="@layout/fragment_theory" />
+    <fragment
+        android:id="@+id/startGameFragment"
+        android:name="com.example.investmentguidevtb.ui.practice.StartGameFragment"
+        android:label="Игра"
+        tools:layout="@layout/fragment_start_game" >
+        <action
+            android:id="@+id/action_startGameFragment_to_practiceFragment"
+            app:destination="@id/practiceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.investmentguidevtb.ui.profile.ChatFragment"
