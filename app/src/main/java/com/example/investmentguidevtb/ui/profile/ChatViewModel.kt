@@ -11,6 +11,8 @@ import com.example.investmentguidevtb.data.source.UserSegmentationDataManager
 import com.example.investmentguidevtb.ui.profile.models.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,6 +23,9 @@ class ChatViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var parameters = SegmentationParameters()
+
+    private val eventChannel = Channel<Event>()
+    val event = eventChannel.receiveAsFlow()
 
     private var curQuestionId: Int = 0
     private var messageCounter: Int = 0
@@ -115,8 +120,12 @@ class ChatViewModel @Inject constructor(
         manager.setDifficulty(difficulty)
         manager.setRisk(risk)
         manager.setSegmentationPassed()
+        eventChannel.send(Event.navigateToGameStart)
 
     }
 
+    sealed class Event() {
+        object navigateToGameStart: Event()
+    }
 
 }

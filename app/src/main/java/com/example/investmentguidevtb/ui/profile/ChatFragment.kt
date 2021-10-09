@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.FragmentChatBinding
 import com.example.investmentguidevtb.ui.profile.adapters.ChatAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ChatFragment() : Fragment(R.layout.fragment_chat) {
@@ -30,9 +33,22 @@ class ChatFragment() : Fragment(R.layout.fragment_chat) {
         val chatAdapter = ChatAdapter()
         binding.recyclerViewChat.adapter = chatAdapter
 
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.event.collect { event ->
+                when(event){
+                    is ChatViewModel.Event.navigateToGameStart -> {
+                        val action = ChatFragmentDirections.actionChatFragmentToStartGameFragment()
+                        findNavController().navigate(action)
+                    }
+                }
+            }
+        }
+
         viewModel.chatStateData.observe(viewLifecycleOwner){ listOfMessages ->
             chatAdapter.submitList(listOfMessages)
             chatAdapter.notifyDataSetChanged()
+            binding.recyclerViewChat.scrollToPosition(chatAdapter.currentList.size - 1);
         }
 
         binding.apply {

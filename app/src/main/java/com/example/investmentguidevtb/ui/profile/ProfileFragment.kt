@@ -41,7 +41,7 @@ class ProfileFragment() : Fragment(R.layout.fragment_profile) {
                 when(event){
                     is ProfileViewModel.Event.SegmentationPassed ->  {
                         binding.apply {
-                            infoMessage.text = "Вы прошли сегментацию. Можете приступать к игре!"
+                            infoMessage.text = "Вы прошли анкетирование. Можете приступать к игре!"
                             btnStartSegmentation.visibility = View.GONE
                         }
                     }

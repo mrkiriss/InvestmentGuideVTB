@@ -41,7 +41,11 @@
         android:id="@+id/chatFragment"
         android:name="com.example.investmentguidevtb.ui.profile.ChatFragment"
         android:label="Чат"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_startGameFragment"
+            app:destination="@id/startGameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.example.investmentguidevtb.ui.theory.ArticleFragment"
