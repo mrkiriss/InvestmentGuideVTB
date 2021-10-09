@@ -12,6 +12,7 @@ class PracticeRepository @Inject constructor(
     val requestToChangeCardVisible = MutableLiveData<Boolean>()
 
     suspend fun requestSolutionFromServer(risk: Float, difficult: Float, capitalDiff: Int, vtb: Int): GameSituation? {
+
         requestToChangeCardVisible.value = false
         val result = practiceApi.getSolution(
             difficult.toString(),
