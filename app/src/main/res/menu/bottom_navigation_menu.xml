@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/profileFragment"
-        android:title="Profile"
+        android:title="Профиль"
         android:icon="@drawable/ic_profile"/>
     <item
         android:id="@+id/theoryFragment"
-        android:title="Theory"
+        android:title="Теория"
         android:icon="@drawable/ic_theory"/>
     <item
-        android:id="@+id/practiceFragment"
-        android:title="Practice"
+        android:id="@+id/startGameFragment"
+        android:title="Практика"
         android:icon="@drawable/ic_practice"/>
 </menu>
