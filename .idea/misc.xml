@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/prog/github/InvestmentGuideVTB/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/prog/github/InvestmentGuideVTB/app/src/main/res/layout/fragment_article.xml" value="0.25416666666666665" />
+        <entry key="..\:/prog/github/InvestmentGuideVTB/app/src/main/res/layout/fragment_game_feedback.xml" value="0.24010416666666667" />
         <entry key="..\:/prog/github/InvestmentGuideVTB/app/src/main/res/layout/fragment_game_situation.xml" value="0.2" />
         <entry key="..\:/prog/github/InvestmentGuideVTB/app/src/main/res/layout/fragment_practice.xml" value="0.264" />
         <entry key="..\:/prog/github/InvestmentGuideVTB/app/src/main/res/layout/fragment_start_game.xml" value="0.24010416666666667" />

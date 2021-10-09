@@ -7,8 +7,7 @@
         motion:constraintSetEnd="@+id/right"
         motion:constraintSetStart="@id/start"
         motion:duration="300">
-       <KeyFrameSet>
-       </KeyFrameSet>
+       <KeyFrameSet></KeyFrameSet>
         <OnSwipe
             motion:touchAnchorId="@+id/card"
             motion:dragDirection="dragRight"
@@ -18,20 +17,6 @@
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
-        <Constraint
-            motion:layout_constraintWidth_percent="0.7"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
-            android:layout_marginEnd="64dp"
-            motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            android:layout_marginStart="64dp"
-            motion:layout_constraintHeight_percent="0.7"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="80dp"
-            android:id="@+id/card" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/right">
@@ -47,7 +32,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="110dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintHeight_percent="0.6"
             android:id="@+id/card" />
         <Constraint
             android:id="@+id/card2"
@@ -62,101 +47,24 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintHeight_percent="0.6"
             android:scaleX="0.95"
             android:scaleY="0.95"/>
         <Constraint
-            android:id="@+id/card2"
-            motion:layout_constraintWidth_percent="0.7"
+            android:id="@+id/solutionRight"
+            android:scaleX="1"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginStart="64dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="80dp"
-            android:scaleX="0.95"
-            android:scaleY="0.95"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:scaleY="1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7" />
-        <Constraint
-            android:id="@+id/situationChoiceLeft2"
-            motion:layout_constraintEnd_toEndOf="@+id/card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            android:layout_marginEnd="8dp"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationChoiceLeft2"
-            android:scaleX="0.95"
-            motion:layout_constraintEnd_toEndOf="@+id/card"
-            android:scaleY="0.95"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            android:layout_marginEnd="8dp"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationChoiceBottom2"
-            motion:layout_constraintEnd_toEndOf="@+id/situationDescription2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription2"
-            motion:layout_constraintStart_toStartOf="@+id/situationDescription2"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationChoiceBottom2"
-            android:scaleX="0.95"
-            android:scaleY="0.95"
-            motion:layout_constraintEnd_toEndOf="@+id/situationDescription2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription2"
-            motion:layout_constraintStart_toStartOf="@+id/situationDescription2"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationChoiceRight2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            android:layout_marginStart="8dp"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription2"
-            motion:layout_constraintStart_toStartOf="@+id/card2"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationDescription2"
-            motion:layout_constraintEnd_toEndOf="@+id/card2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            motion:layout_constraintStart_toStartOf="@+id/card2"
-            android:layout_marginTop="8dp"
-            android:scaleX="0.95"
-            android:scaleY="0.95"
-            motion:layout_constraintBottom_toBottomOf="@+id/card2"
-            android:layout_marginBottom="4dp"
-            motion:layout_constraintVertical_bias="1.0"
-            motion:layout_constraintTop_toBottomOf="@+id/situationImage2"
-            motion:layout_constraintHorizontal_bias="0.0" />
-        <Constraint
-            android:id="@+id/situationImage2"
-            motion:layout_constraintEnd_toEndOf="@+id/card2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            motion:layout_constraintTop_toTopOf="@+id/card2"
-            motion:layout_constraintStart_toStartOf="@+id/card2"
-            android:layout_marginTop="4dp" />
+            android:alpha="1"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" >
+            <CustomAttribute
+                motion:attributeName="textScaleX"
+                motion:customFloatValue="1" />
+        </Constraint>
     </ConstraintSet>
     <ConstraintSet android:id="@+id/rightOff" >
         <Constraint
@@ -169,7 +77,7 @@
             android:layout_marginEnd="64dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             android:layout_marginStart="800dp"
-            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintHeight_percent="0.6"
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="50dp"
             android:id="@+id/card" />
@@ -188,75 +96,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7" />
-        <Constraint
-            android:id="@+id/card2"
-            motion:layout_constraintWidth_percent="0.7"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginStart="64dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="80dp"
-            android:scaleX="1"
-            android:scaleY="1"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
-            motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7" />
-        <Constraint
-            android:id="@+id/situationChoiceBottom2"
-            motion:layout_constraintEnd_toEndOf="@+id/situationDescription2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription2"
-            motion:layout_constraintStart_toStartOf="@+id/situationDescription2"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationChoiceLeft2"
-            motion:layout_constraintEnd_toEndOf="@+id/card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            android:layout_marginEnd="8dp"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationChoiceRight2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            android:layout_marginStart="8dp"
-            motion:layout_constraintTop_toTopOf="@+id/situationDescription2"
-            motion:layout_constraintStart_toStartOf="@+id/card2"
-            android:layout_marginTop="8dp" />
-        <Constraint
-            android:id="@+id/situationDescription2"
-            motion:layout_constraintEnd_toEndOf="@+id/card2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            motion:layout_constraintStart_toStartOf="@+id/card2"
-            android:layout_marginTop="8dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/card2"
-            android:layout_marginBottom="4dp"
-            motion:layout_constraintVertical_bias="1.0"
-            motion:layout_constraintTop_toBottomOf="@+id/situationImage2"
-            motion:layout_constraintHorizontal_bias="0.0" />
-        <Constraint
-            android:id="@+id/situationImage2"
-            motion:layout_constraintEnd_toEndOf="@+id/card2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:layout_marginStart="4dp"
-            motion:layout_constraintTop_toTopOf="@+id/card2"
-            motion:layout_constraintStart_toStartOf="@+id/card2"
-            android:layout_marginTop="4dp" />
+            motion:layout_constraintHeight_percent="0.6" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/right"
@@ -268,7 +108,7 @@
             motion:dragDirection="dragRight"
             motion:touchAnchorSide="left"
             motion:touchRegionId="@id/card"
-            motion:onTouchUp="neverCompleteToEnd"/>
+            motion:onTouchUp="autoComplete"/>
     </Transition>
     <ConstraintSet android:id="@+id/left" >
         <Constraint
@@ -283,7 +123,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="110dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintHeight_percent="0.6"
             android:id="@+id/card" />
         <Constraint
             android:id="@+id/card2"
@@ -300,7 +140,22 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7" />
+            motion:layout_constraintHeight_percent="0.6" />
+        <Constraint
+            android:id="@+id/solutionLeft"
+            android:scaleX="1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:scaleY="1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            motion:layout_constraintTop_toBottomOf="@+id/inflationText"
+            android:alpha="1"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" >
+            <CustomAttribute
+                motion:attributeName="textScaleX"
+                motion:customFloatValue="1" />
+        </Constraint>
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/start"
@@ -328,7 +183,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="110dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintHeight_percent="0.6"
             android:id="@+id/card" />
         <Constraint
             android:id="@+id/card2"
@@ -345,7 +200,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7" />
+            motion:layout_constraintHeight_percent="0.6" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/left"
@@ -357,7 +212,7 @@
             motion:dragDirection="dragLeft"
             motion:touchAnchorSide="left"
             motion:touchRegionId="@id/card"
-            motion:onTouchUp="neverCompleteToEnd"/>
+            motion:onTouchUp="autoComplete"/>
     </Transition>
     <ConstraintSet android:id="@+id/bottom" >
         <Constraint
@@ -372,7 +227,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintHeight_percent="0.6"
             android:id="@+id/card" />
         <Constraint
             android:id="@+id/card2"
@@ -389,7 +244,22 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7" />
+            motion:layout_constraintHeight_percent="0.6" />
+        <Constraint
+            android:id="@+id/solutionBottom"
+            android:scaleX="1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:scaleY="1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            motion:layout_constraintTop_toBottomOf="@+id/inflationText"
+            android:alpha="1"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp" >
+            <CustomAttribute
+                motion:attributeName="textScaleX"
+                motion:customFloatValue="1" />
+        </Constraint>
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/start"
@@ -417,7 +287,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7"
+            motion:layout_constraintHeight_percent="0.6"
             android:id="@+id/card" />
         <Constraint
             android:id="@+id/card2"
@@ -434,7 +304,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
-            motion:layout_constraintHeight_percent="0.7" />
+            motion:layout_constraintHeight_percent="0.6" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/bottom"
@@ -446,6 +316,6 @@
             motion:dragDirection="dragDown"
             motion:touchRegionId="@id/card"
             motion:touchAnchorSide="bottom"
-            motion:onTouchUp="autoCompleteToEnd"/>
+            motion:onTouchUp="autoComplete"/>
     </Transition>
 </MotionScene>
