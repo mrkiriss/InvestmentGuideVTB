@@ -17,8 +17,12 @@
     <fragment
         android:id="@+id/practiceFragment"
         android:name="com.example.investmentguidevtb.ui.practice.PracticeFragment"
-        android:label="Запуск игры"
-        tools:layout="@layout/fragment_practice" />
+        android:label="Игровой режим"
+        tools:layout="@layout/fragment_practice" >
+        <action
+            android:id="@+id/action_practiceFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/theoryFragment"
         android:name="com.example.investmentguidevtb.ui.theory.TheoryFragment"
@@ -27,7 +31,7 @@
     <fragment
         android:id="@+id/startGameFragment"
         android:name="com.example.investmentguidevtb.ui.practice.StartGameFragment"
-        android:label="Игра"
+        android:label="Запуск игры"
         tools:layout="@layout/fragment_start_game" >
         <action
             android:id="@+id/action_startGameFragment_to_practiceFragment"
@@ -38,4 +42,9 @@
         android:name="com.example.investmentguidevtb.ui.profile.ChatFragment"
         android:label="Чат"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.investmentguidevtb.ui.theory.ArticleFragment"
+        android:label="Статья"
+        tools:layout="@layout/fragment_article" />
 </navigation>

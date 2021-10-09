@@ -95,6 +95,8 @@ dependencies {
 
     // Third-party libraries
     implementation "com.github.Adilhusen:circle-progress-ad-android-:1.0"
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'com.github.sujithkanna:smileyrating:2.0.0'
 }
 
 kapt {

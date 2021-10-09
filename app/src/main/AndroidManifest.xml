@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name=".di.App"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:name=".di.App"
         android:icon="@mipmap/ic_launcher"
@@ -19,5 +21,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
