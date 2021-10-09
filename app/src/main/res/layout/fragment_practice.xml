@@ -15,7 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="Текущий капитал"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/capital"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="Уровень инфляции:"
         app:layout_constraintStart_toStartOf="@+id/capital"
         app:layout_constraintTop_toBottomOf="@+id/capital" />
@@ -49,7 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="8"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/inflationText"
         app:layout_constraintStart_toEndOf="@+id/inflationText"
         app:layout_constraintTop_toTopOf="@+id/inflationText" />
@@ -58,6 +63,7 @@
         android:id="@+id/inflationTextPercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
         android:text="%"
         app:layout_constraintBottom_toBottomOf="@+id/inflation"
         app:layout_constraintStart_toEndOf="@+id/inflation"
@@ -95,6 +101,7 @@
             app:layout_constraintEnd_toEndOf="@+id/card"
             app:layout_constraintStart_toStartOf="@+id/card"
             app:layout_constraintTop_toBottomOf="@+id/situationDescription"
+            app:srcCompat="@drawable/ic_vtb_emblem"
             tools:srcCompat="@drawable/ic_vtb_emblem" />
 
         <TextView
@@ -107,6 +114,7 @@
             android:gravity="center"
             android:padding="4dp"
             android:text="Для того, чтобы начать игру, передвиньте карточку влево, вправо или вниз"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
