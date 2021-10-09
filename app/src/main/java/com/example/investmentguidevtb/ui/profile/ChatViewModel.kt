@@ -60,8 +60,8 @@ class ChatViewModel @Inject constructor(
 
     private fun getReadableAnswers(answers: List<Answer>): String {
         var result = ""
-        for(answer in answers) {
-            result+=answer.text+"\n"
+        for((index, answer) in answers.withIndex()) {
+            result+=(index+1).toString()+") "+answer.text+"\n"
         }
         return result
     }
@@ -74,7 +74,7 @@ class ChatViewModel @Inject constructor(
             }
 
             // get current question and possible answers
-            val ques = it.get(curQuestionId)
+            var ques = it.get(curQuestionId)
             val ans = ques.answers.get(answerId)
 
             // change parameters based on user's answer
@@ -103,6 +103,7 @@ class ChatViewModel @Inject constructor(
             }
 
             // update recycler view with question
+            ques = it.get(curQuestionId)
             val questionMessage = UserMessage(messageCounter, 2, ques.text+"\nВарианты ответа:\n"+getReadableAnswers(ques.answers))
             _chatState.add(questionMessage)
             messageCounter++
