@@ -87,6 +87,7 @@ class PracticeFragment() : Fragment(R.layout.fragment_practice) {
             binding.solutionLeft.text = it.solutions[2].text
         }
 
+
         viewModel.requestToShowStepFeedback.observe(viewLifecycleOwner) {
             it.getContent()?.let {
                 MaterialDialog(requireActivity()).show {
@@ -96,7 +97,7 @@ class PracticeFragment() : Fragment(R.layout.fragment_practice) {
                     message(text = it.feedback)
 
                     checkBoxPrompt(text = "Не показывать в течение игры") { checked ->
-                        // Check box was checked or unchecked
+                        viewModel.showStepFeedback = !checked
                     }
 
                     positiveButton(text = "Подробнее в статье") { dialog ->

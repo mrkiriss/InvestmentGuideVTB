@@ -1,18 +1,14 @@
 package com.example.investmentguidevtb.ui.practice
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.investmentguidevtb.data.repository.PracticeRepository
 import com.example.investmentguidevtb.ui.Event
-import com.example.investmentguidevtb.ui.practice.models.GameArticle
+import com.example.investmentguidevtb.ui.practice.models.GameEndFeedback
 import com.example.investmentguidevtb.ui.practice.models.GameSituation
 import com.example.investmentguidevtb.ui.practice.models.GameSolution
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @HiltViewModel
 class PracticeViewModel @Inject constructor(
@@ -25,6 +21,8 @@ class PracticeViewModel @Inject constructor(
     var difficult = 0f
     var vtb = 2
     var inflation = 0.05f
+    var showStepFeedback = true
+    var numberOfSituationsBeforeNaturalEnd = 24
 
     private val _requestToUpdateSituation = MutableLiveData<GameSituation>()
     val requestToUpdateSituation: LiveData<GameSituation> = _requestToUpdateSituation
@@ -37,15 +35,41 @@ class PracticeViewModel @Inject constructor(
 
     val requestToChangeCardVisible: LiveData<Boolean> = rep.requestToChangeCardVisible
 
-    val requestToUpdateCapital: MutableLiveData<Int> = MutableLiveData<Int>()
+    val requestToUpdateCapital = MutableLiveData<Int>()
+
+    val requestToEndGame: LiveData<GameEndFeedback> = rep.requestToEndGame
 
 
     private fun loadGameSituation() {
+        if (numberOfSituationsBeforeNaturalEnd == 0) {
+            createEndFeedback()
+        } else {
+            loadStandardSituation()
+        }
+    }
+
+    private fun createEndFeedback() {
         viewModelScope.launch {
-            val result = rep.requestSolutionFromServer(risk, difficult, currentCapital - prevCapital, vtb)
+            rep.requestEndFeedback(
+                risk,
+                currentCapital,
+                24 - numberOfSituationsBeforeNaturalEnd
+            )
+        }
+    }
+    private fun loadStandardSituation() {
+        viewModelScope.launch {
+            val result = rep.requestSolutionFromServer(
+                risk,
+                difficult,
+                currentCapital - prevCapital,
+                vtb
+            )
             if (result == null) {
-                _requestToShowToastContent.value = "Загрузка провалилась, повторите попытку позже"
+                _requestToShowToastContent.value =
+                    "Загрузка провалилась, повторите попытку позже"
             } else {
+                numberOfSituationsBeforeNaturalEnd--
                 _requestToUpdateSituation.value = result!!
                 startInflation()
             }
@@ -63,7 +87,7 @@ class PracticeViewModel @Inject constructor(
         if (selectedSolution == null) {
             // пытаемся загрузить данные, если пользователь карточку передвинул, а выборов нет
             loadGameSituation()
-        } else {
+        } else if (showStepFeedback){
             // создание фидбека при наличии контента
             selectedSolution.feedback?.also {
                 _requestToShowStepFeedback.value = Event(selectedSolution!!)

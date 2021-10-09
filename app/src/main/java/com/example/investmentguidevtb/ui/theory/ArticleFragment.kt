@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
+import com.bumptech.glide.Glide
 import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.FragmentArticleBinding
 import com.example.investmentguidevtb.ui.practice.models.GameArticle
@@ -31,11 +32,11 @@ class ArticleFragment : Fragment() {
             it as GameArticle
         }
 
-        article?.apply {
-            //binding.articleImage
-            binding.articleHeader.text = header
-            binding.articleBody.text = body
-            binding.articleAuthor.text = author
+        article?.also {
+            binding.articleHeader.text = it.header
+            binding.articleBody.text = it.body
+            binding.articleAuthor.text = it.author
+            Glide.with(this).load(it.image_url).into(binding.articleImage)
         }
     }
 
