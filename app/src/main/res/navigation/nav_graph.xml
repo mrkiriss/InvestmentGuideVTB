@@ -21,7 +21,11 @@
         tools:layout="@layout/fragment_practice" >
         <action
             android:id="@+id/action_practiceFragment_to_articleFragment"
-            app:destination="@id/articleFragment" />
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/theoryFragment"
@@ -35,7 +39,11 @@
         tools:layout="@layout/fragment_start_game" >
         <action
             android:id="@+id/action_startGameFragment_to_practiceFragment"
-            app:destination="@id/practiceFragment" />
+            app:destination="@id/practiceFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"

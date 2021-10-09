@@ -5,17 +5,19 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ui.theory.ArticleFragment">
 
     <ImageView
         android:id="@+id/articleImage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_vtb_emblem" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,31 +32,41 @@
 
             <TextView
                 android:id="@+id/articleHeader"
+                style="@style/Theme.InvestmentGuideVTB.LargeTitle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
-                android:text="TextView"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:text="TextView" />
 
             <TextView
                 android:id="@+id/articleBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="TextView"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/articleAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="TextView"
                 android:textStyle="italic" />
+
             <com.hsalf.smilerating.SmileRating
                 android:id="@+id/rating"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
