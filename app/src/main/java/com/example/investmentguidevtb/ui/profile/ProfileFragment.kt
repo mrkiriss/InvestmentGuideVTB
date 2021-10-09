@@ -40,10 +40,16 @@ class ProfileFragment() : Fragment(R.layout.fragment_profile) {
             viewModel.event.collect { event ->
                 when(event){
                     is ProfileViewModel.Event.SegmentationPassed ->  {
-
+                        binding.apply {
+                            infoMessage.text = "Вы прошли сегментацию. Можете приступать к игре!"
+                            btnStartSegmentation.visibility = View.GONE
+                        }
                     }
                     is ProfileViewModel.Event.SegmentationNotPassed -> {
-
+                        binding.apply {
+                            infoMessage.text = "У нас пока нет о Вас данных"
+                            btnStartSegmentation.visibility = View.VISIBLE
+                        }
                     }
                 }
             }
