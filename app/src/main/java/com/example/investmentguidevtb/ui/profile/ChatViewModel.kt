@@ -87,6 +87,7 @@ class ChatViewModel @Inject constructor(
                     "goal" -> parameters.goal+=param.change.toFloat()
                     "salary" -> parameters.salary+=param.change.toFloat()
                     "foundOut" -> parameters.foundOut+=param.change.toFloat()
+                    "mainGoal" -> parameters.mainGoal = param.name
                 }
             }
 
@@ -116,10 +117,12 @@ class ChatViewModel @Inject constructor(
         //Formulas
         val difficulty = (parameters.edu + parameters.knowledge + parameters.goal + parameters.salary + parameters.foundOut) * 3f / 5f
         val risk = parameters.riskReadiness
+        val mainGoal = parameters.mainGoal
 
         //Saving to DB
         manager.setDifficulty(difficulty)
         manager.setRisk(risk)
+        manager.setMainGoal(mainGoal)
         manager.setSegmentationPassed()
         eventChannel.send(Event.navigateToGameStart)
 

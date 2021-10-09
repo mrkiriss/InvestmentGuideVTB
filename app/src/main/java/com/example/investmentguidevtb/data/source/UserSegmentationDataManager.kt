@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first
@@ -39,6 +40,19 @@ class UserSegmentationDataManager @Inject constructor(
         val diffPref = floatPreferencesKey("difficulty")
         context.dataStore.edit { settings ->
             settings[diffPref] = newValue
+        }
+    }
+
+    suspend fun getMainGoal(): String {
+        val pref = stringPreferencesKey("mainGoal")
+        val preferences = context.dataStore.data.first()
+        return preferences[pref] ?: ""
+    }
+
+    suspend fun setMainGoal(newValue: String) {
+        val pref = stringPreferencesKey("mainGoal")
+        context.dataStore.edit { settings ->
+            settings[pref] = newValue
         }
     }
 
