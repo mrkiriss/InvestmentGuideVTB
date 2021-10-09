@@ -46,10 +46,10 @@
             android:id="@+id/info_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="18sp"
-            tools:text="У нас пока нет о Вас данных"/>
+            tools:text="У нас пока нет о Вас данных" />
 
         <Button
             android:id="@+id/btn_start_segmentation"

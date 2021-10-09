@@ -21,6 +21,8 @@ import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.FragmentPracticeBinding
 import com.example.investmentguidevtb.ui.theory.ArticleFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_practice.*
+import kotlin.random.Random.Default.nextFloat
 
 @AndroidEntryPoint
 class PracticeFragment() : Fragment(R.layout.fragment_practice) {
@@ -58,9 +60,21 @@ class PracticeFragment() : Fragment(R.layout.fragment_practice) {
                 }
             })
 
+        processArguments();
+
         initObservers()
 
         return binding.root
+    }
+
+    private fun processArguments() {
+        arguments?.let {
+            viewModel.risk = it.getFloat("risk")
+            viewModel.difficult = it.getFloat("difficult")
+            viewModel.inflation = it.getFloat("inflation")
+
+            binding.inflation.text = (viewModel.inflation * 100).toInt().toString()
+        }
     }
 
     private fun initObservers() {
@@ -105,6 +119,22 @@ class PracticeFragment() : Fragment(R.layout.fragment_practice) {
         viewModel.requestToChangeCardVisible.observe(viewLifecycleOwner) {
             binding.card.visibility = if (it == true) View.VISIBLE else View.GONE
         }
+
+        viewModel.requestToUpdateCapital.observe(viewLifecycleOwner) {
+            viewModel.prevCapital = (it * (1 - viewModel.inflation)).toInt()
+            viewModel.currentCapital = it
+        }
+
+    }
+
+    companion object {
+        fun createBundle(risk: Float?, difficult: Float?, inflation: Float) =
+            Bundle().apply {
+                this.putFloat("risk", risk ?: nextFloat())
+                val randIntDifficult = (0..3).random()
+                this.putFloat("difficult", difficult ?: randIntDifficult.toFloat())
+                this.putFloat("inflation", inflation)
+            }
     }
 
 }

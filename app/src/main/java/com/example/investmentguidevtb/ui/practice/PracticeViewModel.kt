@@ -19,6 +19,13 @@ class PracticeViewModel @Inject constructor(
     private val rep: PracticeRepository
 ): ViewModel(){
 
+    var prevCapital = 0
+    var currentCapital = 0
+    var risk = 0f
+    var difficult = 0f
+    var vtb = 2
+    var inflation = 0.05f
+
     private val _requestToUpdateSituation = MutableLiveData<GameSituation>()
     val requestToUpdateSituation: LiveData<GameSituation> = _requestToUpdateSituation
 
@@ -30,16 +37,24 @@ class PracticeViewModel @Inject constructor(
 
     val requestToChangeCardVisible: LiveData<Boolean> = rep.requestToChangeCardVisible
 
+    val requestToUpdateCapital: MutableLiveData<Int> = MutableLiveData<Int>()
+
+
     private fun loadGameSituation() {
         viewModelScope.launch {
-            val result = rep.requestSolutionFromServer()
+            val result = rep.requestSolutionFromServer(risk, difficult, currentCapital - prevCapital, vtb)
             if (result == null) {
-                if (_requestToShowStepFeedback.value != null) _requestToUpdateSituation.value = _requestToUpdateSituation.value
-                _requestToShowToastContent.value = "Загрузка не удалась, повторите попытку позже"
+                _requestToShowToastContent.value = "Загрузка провалилась, повторите попытку позже"
             } else {
                 _requestToUpdateSituation.value = result!!
+                startInflation()
             }
         }
+    }
+
+    private fun startInflation() {
+        currentCapital = (currentCapital * (1 - inflation)).toInt()
+        requestToUpdateCapital.value = currentCapital
     }
 
     fun processSelectedSolution(solutionIndex: Int) {
@@ -54,10 +69,14 @@ class PracticeViewModel @Inject constructor(
                 _requestToShowStepFeedback.value = Event(selectedSolution!!)
             }
 
-            // обработка с целью получить новую карточку
-            viewModelScope.launch {
-                rep.processSelectedSolution(selectedSolution)
-            }
+            // обработка
+            risk = (risk + selectedSolution.delta.risk) / 2
+            vtb -= if (selectedSolution.delta.vtb) 1 else 0
+            prevCapital = currentCapital
+            currentCapital += selectedSolution.delta.capital
+
+            // запрос на загрузку новой карточки
+            loadGameSituation()
         }
     }
 }
