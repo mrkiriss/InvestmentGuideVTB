@@ -30,6 +30,12 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_practiceFragment_to_gameFeedbackFragment"
+            app:destination="@id/gameFeedbackFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popUpTo="@id/startGameFragment" />
     </fragment>
     <fragment
         android:id="@+id/theoryFragment"
@@ -100,4 +106,9 @@
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right"/>
     </fragment>
+    <fragment
+        android:id="@+id/gameFeedbackFragment"
+        android:name="com.example.investmentguidevtb.ui.practice.GameFeedbackFragment"
+        android:label="fragment_game_feedback"
+        tools:layout="@layout/fragment_game_feedback" />
 </navigation>

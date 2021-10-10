@@ -2,6 +2,7 @@ package com.example.investmentguidevtb.ui.theory
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.investmentguidevtb.R
@@ -15,9 +16,14 @@ class TheoryFragment() : Fragment(R.layout.fragment_theory) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.data.observe(viewLifecycleOwner){
+        viewModel.requestToast.observe(viewLifecycleOwner){
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }
+        viewModel.requestAddList.observe(viewLifecycleOwner) {
 
         }
     }
+
+
 
 }
