@@ -7,5 +7,6 @@ data class SegmentationParameters(
     var knowledge: Float = 0f,
     var goal: Float = 0f,
     var salary: Float = 0f,
-    var foundOut: Float = 0f
+    var foundOut: Float = 0f,
+    var mainGoal: String = ""
 )

@@ -1,5 +1,6 @@
 package com.example.investmentguidevtb.di
 
+import com.example.investmentguidevtb.data.source.api.ArticleApi
 import com.example.investmentguidevtb.data.source.api.PracticeApi
 import dagger.Binds
 import dagger.Module
@@ -40,5 +41,18 @@ object SourceModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(PracticeApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideArticleApi(): ArticleApi {
+        val baseUrl = "https://vtbhackaton.herokuapp.com/articles/";
+
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(ArticleApi::class.java)
     }
 }

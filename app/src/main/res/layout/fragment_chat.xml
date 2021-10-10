@@ -38,39 +38,39 @@
         app:layout_constraintStart_toStartOf="parent">
 
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_answer0"
             android:layout_margin="8dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/circular_button_background"
             android:layout_weight="1"
-            android:src="@drawable/ic_diamond"/>
+            android:text="1"/>
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_answer1"
             android:layout_margin="8dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/circular_button_background"
-            android:src="@drawable/ic_fire"/>
-        <ImageButton
+            android:text="2"/>
+        <Button
             android:id="@+id/btn_answer2"
             android:layout_margin="8dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/circular_button_background"
-            android:src="@drawable/ic_heart"/>
-        <ImageButton
+            android:text="3"/>
+        <Button
             android:id="@+id/btn_answer3"
             android:layout_margin="8dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/circular_button_background"
-            android:src="@drawable/ic_lamp"/>
+            android:text="4"/>
 
 
     </LinearLayout>

@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.FragmentStartGameBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class StartGameFragment : Fragment() {
@@ -43,11 +44,16 @@ class StartGameFragment : Fragment() {
 
     private fun initObservers() {
         viewModel.requestToAddRiskData.observe(viewLifecycleOwner) {
-            risk = it
+            risk = if (it !in 0.0..1.0) Random.nextFloat() else it
         }
 
         viewModel.requestToAddDifficultData.observe(viewLifecycleOwner) {
             difficult = it
+
+            if (difficult == -1f || difficult < 0) {
+                val randIntDifficult = (0..3).random()
+                difficult = randIntDifficult.toFloat()
+            }
 
             inflation = (difficult + 5) / 100
         }

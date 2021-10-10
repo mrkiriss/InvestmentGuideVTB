@@ -1,28 +1,37 @@
 package com.example.investmentguidevtb.ui.theory
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.investmentguidevtb.data.source.UserSegmentationDataManager
+import com.example.investmentguidevtb.data.source.api.ArticleApi
+import com.example.investmentguidevtb.ui.practice.models.GameArticle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class TheoryViewModel @Inject constructor(
-    private val manager: UserSegmentationDataManager
+    private val articleApi: ArticleApi
 ) : ViewModel(){
 
-    //FOR TESTING
-    val data: LiveData<String> = liveData {  }
+    val requestAddList = MutableLiveData<List<GameArticle>>()
+    val requestToast = MutableLiveData<String>()
 
-    init{
+
+    init {
         viewModelScope.launch {
-            Log.d("TheoryViewModel", "Difficulty: "+manager.getDifficulty())
-            Log.d("TheoryViewModel", "Risk: "+manager.getRisk())
+            try {
+                val result = articleApi.downloadAllArticles()
+                 if (result.isSuccessful && result.body() != null) {
+                     requestAddList.value = result.body()
+                 } else {
+                     requestToast.value = "Загрузка статей завершилась неудачей"
+                 }
+            } catch (e: Exception) {
+                requestToast.value = "Загрузка статей завершилась неудачей"
+                e.printStackTrace()
+            }
         }
-
     }
 }

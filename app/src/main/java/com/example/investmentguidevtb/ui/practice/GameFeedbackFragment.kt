@@ -5,56 +5,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import com.example.investmentguidevtb.R
+import com.example.investmentguidevtb.databinding.FragmentGameFeedbackBinding
+import com.example.investmentguidevtb.ui.practice.models.GameEndFeedback
+import com.example.investmentguidevtb.ui.theory.ArticleFragment
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [GameFeedbackFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GameFeedbackFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentGameFeedbackBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_feedback, container, false)
+
+        binding = FragmentGameFeedbackBinding.inflate(inflater)
+
+        processArguments()
+
+        binding.goToGameStart.setOnClickListener() {
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
+                .navigateUp()
+        }
+
+        return binding.root
+    }
+
+    private fun processArguments() {
+        arguments?.getSerializable("gameEndFeedback")?.also {
+            it as GameEndFeedback
+            // вставка данных в binding
+            Glide.with(this).load(it.goalResultPicture ?: "").into(binding.goalImage)
+            binding.goalDescription.text = it.goalResultDescription
+
+            Glide.with(this).load(it.riskResultDescription ?: "").into(binding.riskImage)
+            binding.riskDescription.text = it.riskResultDescription
+
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GameFeedbackFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GameFeedbackFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        fun createArguments(gameEndFeedback: GameEndFeedback) = Bundle().apply {
+            putSerializable("gameEndFeedback", gameEndFeedback)
+        }
     }
 }

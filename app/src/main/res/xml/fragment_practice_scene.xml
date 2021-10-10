@@ -45,7 +45,7 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="80dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             motion:layout_constraintHeight_percent="0.6"
             android:scaleX="0.95"
@@ -53,12 +53,11 @@
         <Constraint
             android:id="@+id/solutionRight"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             android:alpha="1"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="24dp" >
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content">
             <CustomAttribute
                 motion:attributeName="textScaleX"
                 motion:customFloatValue="1" />
@@ -92,7 +91,7 @@
             android:scaleX="1"
             android:scaleY="1"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             motion:layout_constraintHeight_percent="0.6" />
     </ConstraintSet>
@@ -136,18 +135,17 @@
             android:scaleX="0.95"
             android:scaleY="0.95"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             motion:layout_constraintHeight_percent="0.6" />
         <Constraint
             android:id="@+id/solutionLeft"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             android:alpha="1"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="24dp" >
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content">
             <CustomAttribute
                 motion:attributeName="textScaleX"
                 motion:customFloatValue="1" />
@@ -194,7 +192,7 @@
             android:scaleX="1"
             android:scaleY="1"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             motion:layout_constraintHeight_percent="0.6" />
     </ConstraintSet>
@@ -221,7 +219,7 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="800dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             motion:layout_constraintHeight_percent="0.6"
             android:id="@+id/card" />
@@ -234,22 +232,20 @@
             android:layout_marginEnd="64dp"
             android:layout_marginStart="64dp"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="80dp"
+            motion:layout_constraintTop_toBottomOf="@+id/barrier2"
             android:scaleX="0.95"
             android:scaleY="0.95"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
-            motion:layout_constraintTop_toBottomOf="@+id/inflationText"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintHeight_percent="0.6" />
         <Constraint
             android:id="@+id/solutionBottom"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             android:alpha="1"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="24dp" >
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content">
             <CustomAttribute
                 motion:attributeName="textScaleX"
                 motion:customFloatValue="1" />
@@ -279,7 +275,7 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="1280dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             motion:layout_constraintHeight_percent="0.6"
             android:id="@+id/card" />
@@ -296,7 +292,7 @@
             android:scaleX="1"
             android:scaleY="1"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="40dp"
             motion:layout_constraintTop_toBottomOf="@+id/inflationText"
             motion:layout_constraintHeight_percent="0.6" />
     </ConstraintSet>

@@ -43,9 +43,26 @@
         app:layout_constraintTop_toBottomOf="@+id/img_avatar">
 
         <TextView
+            android:id="@+id/text_view_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ТЕКУЩАЯ ЦЕЛЬ:"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="28sp"/>
+
+        <ImageView
+            android:id="@+id/image_goal"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_travelling"/>
+
+        <TextView
             android:id="@+id/info_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -57,7 +74,8 @@
             android:layout_height="70dp"
             android:layout_margin="8dp"
             android:backgroundTint="@color/light_blue"
-            android:text="Пройти сегментацию" />
+            android:fontFamily="@font/roboto"
+            android:text="Пройти анкетирование" />
 
     </LinearLayout>
 
