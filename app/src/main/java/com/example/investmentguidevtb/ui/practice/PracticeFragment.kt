@@ -45,13 +45,20 @@ class PracticeFragment() : Fragment(R.layout.fragment_practice) {
                             viewModel.processSelectedSolution(0)
                             motionLayout.progress = 0f
                             motionLayout.setTransition(R.id.start, R.id.right)
+
+                            binding.card.visibility = View.GONE
+
                         }
                         R.id.bottomOff -> {
+                            binding.card.visibility = View.GONE
+
                             viewModel.processSelectedSolution(1)
                             motionLayout.progress = 0f
                             motionLayout.setTransition(R.id.start, R.id.bottom)
                         }
                         R.id.leftOff -> {
+                            binding.card.visibility = View.GONE
+
                             viewModel.processSelectedSolution(2)
                             motionLayout.progress = 0f
                             motionLayout.setTransition(R.id.start, R.id.left)
@@ -122,18 +129,21 @@ class PracticeFragment() : Fragment(R.layout.fragment_practice) {
         }
 
         viewModel.requestToUpdateCapital.observe(viewLifecycleOwner) {
-            viewModel.prevCapital = (it * (1 - viewModel.inflation)).toInt()
-            viewModel.currentCapital = it
+            binding.capital.progress = it
+        }
+
+        viewModel.requestToEndGame.observe(viewLifecycleOwner) {
+            findNavController(requireActivity(), R.id.nav_host_fragment_container)
+                .navigate(R.id.action_practiceFragment_to_gameFeedbackFragment, GameFeedbackFragment.createArguments(it))
         }
 
     }
 
     companion object {
-        fun createBundle(risk: Float?, difficult: Float?, inflation: Float) =
+        fun createBundle(risk: Float, difficult: Float, inflation: Float) =
             Bundle().apply {
-                this.putFloat("risk", risk ?: nextFloat())
-                val randIntDifficult = (0..3).random()
-                this.putFloat("difficult", difficult ?: randIntDifficult.toFloat())
+                this.putFloat("risk", risk)
+                this.putFloat("difficult", difficult)
                 this.putFloat("inflation", inflation)
             }
     }

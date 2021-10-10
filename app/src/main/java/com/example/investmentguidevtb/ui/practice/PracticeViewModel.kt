@@ -41,7 +41,7 @@ class PracticeViewModel @Inject constructor(
 
 
     private fun loadGameSituation() {
-        if (numberOfSituationsBeforeNaturalEnd == 0) {
+        if (isGameEnd()) {
             createEndFeedback()
         } else {
             loadStandardSituation()
@@ -52,7 +52,6 @@ class PracticeViewModel @Inject constructor(
         viewModelScope.launch {
             rep.requestEndFeedback(
                 risk,
-                currentCapital,
                 24 - numberOfSituationsBeforeNaturalEnd
             )
         }
@@ -71,12 +70,12 @@ class PracticeViewModel @Inject constructor(
             } else {
                 numberOfSituationsBeforeNaturalEnd--
                 _requestToUpdateSituation.value = result!!
-                startInflation()
             }
         }
     }
 
     private fun startInflation() {
+        prevCapital = currentCapital
         currentCapital = (currentCapital * (1 - inflation)).toInt()
         requestToUpdateCapital.value = currentCapital
     }
@@ -99,8 +98,13 @@ class PracticeViewModel @Inject constructor(
             prevCapital = currentCapital
             currentCapital += selectedSolution.delta.capital
 
+            startInflation()
+
             // запрос на загрузку новой карточки
             loadGameSituation()
         }
     }
+    private fun isGameEnd() =
+         (currentCapital >=100 || numberOfSituationsBeforeNaturalEnd == 0)
+
 }

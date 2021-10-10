@@ -2,6 +2,7 @@ package com.example.investmentguidevtb.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.investmentguidevtb.data.source.FeedbackBuilder
 import com.example.investmentguidevtb.data.source.api.ArticleApi
 import com.example.investmentguidevtb.data.source.api.PracticeApi
 import com.example.investmentguidevtb.ui.practice.models.GameEndFeedback
@@ -10,8 +11,7 @@ import javax.inject.Inject
 
 class PracticeRepository @Inject constructor(
     private val practiceApi: PracticeApi,
-    private val articleApi: ArticleApi,
-    private val feedback: GameEndFeedback
+    private val feedbackBuilder: FeedbackBuilder
 ) {
 
     val requestToChangeCardVisible = MutableLiveData<Boolean>()
@@ -42,7 +42,11 @@ class PracticeRepository @Inject constructor(
             return null
         }
     }
-    suspend fun requestEndFeedback(risk: Float, currentCapital: Int, numberOfDaysFromBeginningToEnd: Int) {
+    suspend fun requestEndFeedback(risk: Float, numberOfDaysFromBeginningToEnd: Int) {
+        requestToChangeCardVisible.value = false
 
+        requestToEndGame.value = feedbackBuilder.buildGameEndFeedback(risk, numberOfDaysFromBeginningToEnd)
+
+        requestToChangeCardVisible.value = true
     }
 }
