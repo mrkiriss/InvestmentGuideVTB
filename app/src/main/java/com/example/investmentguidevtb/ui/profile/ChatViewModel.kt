@@ -77,6 +77,7 @@ class ChatViewModel @Inject constructor(
             var ques = it.get(curQuestionId)
             val ans = ques.answers.get(answerId)
 
+
             // change parameters based on user's answer
             for(param in ans.parameter){
                 when(param.name){
@@ -87,7 +88,7 @@ class ChatViewModel @Inject constructor(
                     "goal" -> parameters.goal+=param.change.toFloat()
                     "salary" -> parameters.salary+=param.change.toFloat()
                     "foundOut" -> parameters.foundOut+=param.change.toFloat()
-                    "mainGoal" -> parameters.mainGoal = param.name
+                    "mainGoal" -> parameters.mainGoal = ans.text
                 }
             }
 
