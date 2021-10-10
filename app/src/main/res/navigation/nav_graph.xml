@@ -76,7 +76,7 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.investmentguidevtb.ui.SplashFragment"
-        android:label="fragment_splash"
+        android:label=""
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_profileFragment"
@@ -96,7 +96,7 @@
     <fragment
         android:id="@+id/viewPagerFragment"
         android:name="com.example.investmentguidevtb.onboarding.ViewPagerFragment"
-        android:label="fragment_view_pager"
+        android:label=""
         tools:layout="@layout/fragment_view_pager" >
         <action
             android:id="@+id/action_viewPagerFragment_to_profileFragment"
@@ -109,6 +109,6 @@
     <fragment
         android:id="@+id/gameFeedbackFragment"
         android:name="com.example.investmentguidevtb.ui.practice.GameFeedbackFragment"
-        android:label="fragment_game_feedback"
+        android:label="Разбор игры"
         tools:layout="@layout/fragment_game_feedback" />
 </navigation>

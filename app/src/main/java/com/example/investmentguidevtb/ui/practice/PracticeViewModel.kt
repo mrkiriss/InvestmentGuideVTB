@@ -1,5 +1,6 @@
 package com.example.investmentguidevtb.ui.practice
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.investmentguidevtb.data.repository.PracticeRepository
 import com.example.investmentguidevtb.ui.Event
@@ -42,6 +43,7 @@ class PracticeViewModel @Inject constructor(
 
     private fun loadGameSituation() {
         if (isGameEnd()) {
+            Log.i("checkEnd", "end")
             createEndFeedback()
         } else {
             loadStandardSituation()
@@ -68,7 +70,6 @@ class PracticeViewModel @Inject constructor(
                 _requestToShowToastContent.value =
                     "Загрузка провалилась, повторите попытку позже"
             } else {
-                numberOfSituationsBeforeNaturalEnd--
                 _requestToUpdateSituation.value = result!!
             }
         }
@@ -81,15 +82,20 @@ class PracticeViewModel @Inject constructor(
     }
 
     fun processSelectedSolution(solutionIndex: Int) {
+        numberOfSituationsBeforeNaturalEnd--
+        Log.i("checkEnd", "$numberOfSituationsBeforeNaturalEnd")
+
         val selectedSolution = requestToUpdateSituation.value?.solutions?.get(solutionIndex)
 
         if (selectedSolution == null) {
             // пытаемся загрузить данные, если пользователь карточку передвинул, а выборов нет
             loadGameSituation()
-        } else if (showStepFeedback){
+        } else{
             // создание фидбека при наличии контента
-            selectedSolution.feedback?.also {
-                _requestToShowStepFeedback.value = Event(selectedSolution!!)
+            if (showStepFeedback) {
+                selectedSolution.feedback?.also {
+                    _requestToShowStepFeedback.value = Event(selectedSolution!!)
+                }
             }
 
             // обработка
@@ -105,6 +111,6 @@ class PracticeViewModel @Inject constructor(
         }
     }
     private fun isGameEnd() =
-         (currentCapital >=100 || numberOfSituationsBeforeNaturalEnd == 0)
+         (currentCapital >=100 || numberOfSituationsBeforeNaturalEnd <= 0)
 
 }
