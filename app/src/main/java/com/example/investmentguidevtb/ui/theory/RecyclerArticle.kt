@@ -1,43 +1,53 @@
 package com.example.investmentguidevtb.ui.theory
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.TransitionAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.investmentguidevtb.R
 import com.example.investmentguidevtb.databinding.ItemTheoryBinding
 import com.example.investmentguidevtb.ui.practice.models.GameArticle
 
-class RecyclerArticle: RecyclerView.Adapter<RecyclerArticle.ArticleVH>() {
+class RecyclerArticle(val callback: (GameArticle) -> Unit) :
+    RecyclerView.Adapter<RecyclerArticle.ArticleVH>() {
 
     var content: List<GameArticle> = emptyList()
+     set(value) {
+         field = value
+         notifyDataSetChanged()
+     }
 
-    fun addContent(content: List<GameArticle>) {
-        this.content = content
-        notifyDataSetChanged()
-    }
+    class ArticleVH(private val binding: ItemTheoryBinding, val callback: (GameArticle) -> Unit) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    class ArticleVH : RecyclerView.ViewHolder {
+        private var data: GameArticle? = null
 
-        private lateinit var binding: ItemTheoryBinding
-
-        constructor(binding: ItemTheoryBinding) : super(binding.root) {
-            this.binding = binding
+        init {
+            binding.container.setOnClickListener() {
+                data?.also {
+                    callback.invoke(it)
+                }
+            }
         }
 
         fun bind(data: GameArticle) {
-
+            this.data = data
+            binding.articleTitle.text = data.header
+            binding.articleDescription.text = data.body
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleVH {
-        TODO("Not yet implemented")
+        return ArticleVH(ItemTheoryBinding.inflate(LayoutInflater.from(parent.context), parent, false), callback)
     }
 
     override fun onBindViewHolder(holder: ArticleVH, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(content[position])
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() =
+        content.size
 }
